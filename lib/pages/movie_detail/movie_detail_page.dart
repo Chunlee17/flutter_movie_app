@@ -143,9 +143,13 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           Card(
             color: Colors.pink,
             shape: roundRect(16),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Icon(Icons.add, color: Colors.white),
+            child: InkWell(
+              onTap: () {},
+              customBorder: roundRect(16),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Icon(Icons.add, color: Colors.white),
+              ),
             ),
           ),
         ],
