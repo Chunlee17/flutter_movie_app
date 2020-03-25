@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/constant/style.dart';
 import 'package:flutter_movie_app/model/movie_model.dart';
 import 'package:flutter_movie_app/pages/movie_detail/movie_detail_page.dart';
 import 'package:flutter_movie_app/utils/navigator.dart';
@@ -20,7 +21,9 @@ class MovieCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(32),
               child: Container(
-                color: Colors.blueGrey,
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                ),
                 width: double.infinity,
                 child: Image.network(
                   movie.image,
@@ -31,7 +34,11 @@ class MovieCard extends StatelessWidget {
             ),
           ),
           UIHelper.verticalSpace(16),
-          Text(movie.name, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          Text(
+            movie.name,
+            style: headerStyle,
+            textAlign: TextAlign.center,
+          ),
           UIHelper.verticalSpace(16),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +51,7 @@ class MovieCard extends StatelessWidget {
               UIHelper.horizontalSpace(),
               Text(
                 movie.rating.toString(),
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: titleStyle,
               ),
             ],
           ),

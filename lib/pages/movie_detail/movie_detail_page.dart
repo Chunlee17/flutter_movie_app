@@ -119,23 +119,26 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(movie.name, style: headerStyle),
-              UIHelper.verticalSpace(),
-              Row(
-                children: [
-                  Text("${movie.year}", style: subtitleStyle),
-                  UIHelper.horizontalSpace(12),
-                  Text("PG13", style: subtitleStyle),
-                  UIHelper.horizontalSpace(12),
-                  Text("${movie.duration.inMinutes} minutes", style: subtitleStyle),
-                ],
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(movie.name, style: headerStyle),
+                UIHelper.verticalSpace(),
+                Row(
+                  children: [
+                    Text("${movie.year}", style: subtitleStyle),
+                    UIHelper.horizontalSpace(12),
+                    Text("PG13", style: subtitleStyle),
+                    UIHelper.horizontalSpace(12),
+                    Text("${movie.duration.inMinutes} minutes", style: subtitleStyle),
+                  ],
+                ),
+              ],
+            ),
           ),
           Card(
             color: Colors.pink,

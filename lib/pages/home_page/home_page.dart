@@ -17,6 +17,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   TabController tabController;
   PageController pageController;
+  String selectedGenre = "Crime";
   @override
   void initState() {
     pageController = PageController(viewportFraction: 0.6);
@@ -67,11 +68,12 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   }
                   final movie = movies[index];
                   double value = (pageController.page - index).abs().clamp(0.0, 1.0);
+                  double distortionValue = Curves.easeIn.transform(value);
                   bool isLeft = pageController.page > index;
-                  double rotationAsDegree = 12;
+                  double rotationAsDegree = 8;
                   if (isLeft) rotationAsDegree = -rotationAsDegree;
                   return Transform.rotate(
-                    angle: degreeToRadian(rotationAsDegree) * value,
+                    angle: degreeToRadian(rotationAsDegree) * distortionValue,
                     alignment: isLeft ? Alignment.bottomRight : Alignment.bottomLeft,
                     child: MovieCard(movie),
                   );
@@ -107,10 +109,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           final genre = AppConstant.genres[index];
           return Container(
             margin: EdgeInsets.only(left: 16, top: 4, bottom: 4),
-            child: OutlineButton(
+            child: FlatButton(
               child: Text(genre),
-              shape: StadiumBorder(),
-              onPressed: () {},
+              textColor: genre == selectedGenre ? Colors.white : Colors.black,
+              color: genre == selectedGenre ? Colors.pink : Colors.white,
+              shape: StadiumBorder(side: BorderSide(width: 1.0, color: Colors.black12)),
+              onPressed: () {
+                setState(() => selectedGenre = genre);
+              },
             ),
           );
         },
