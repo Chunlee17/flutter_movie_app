@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   }
                   final movie = movies[index];
                   double value = (pageController.page - index).abs().clamp(0.0, 1.0);
-                  double distortionValue = Curves.easeIn.transform(value);
+                  double distortionValue = Curves.easeInCubic.transform(value);
                   bool isLeft = pageController.page > index;
                   double rotationAsDegree = 8;
                   if (isLeft) rotationAsDegree = -rotationAsDegree;
